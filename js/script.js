@@ -71,4 +71,51 @@ window.addEventListener('scroll', () => {
 });
 btnTopo.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}); 
+});
+
+// Carrossel de imagens e frases
+const carouselSlides = document.querySelectorAll('.carousel-slide');
+const arrowLeft = document.querySelector('.carousel-arrow.left');
+const arrowRight = document.querySelector('.carousel-arrow.right');
+let currentSlide = 0;
+
+function showSlide(idx) {
+  carouselSlides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === idx);
+  });
+}
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % carouselSlides.length;
+  showSlide(currentSlide);
+}
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
+  showSlide(currentSlide);
+}
+arrowLeft.addEventListener('click', prevSlide);
+arrowRight.addEventListener('click', nextSlide);
+showSlide(currentSlide);
+
+// Carrossel do topo (hero-carousel)
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroArrowLeft = document.querySelector('.hero-arrow.left');
+const heroArrowRight = document.querySelector('.hero-arrow.right');
+let heroCurrent = 0;
+function showHeroSlide(idx) {
+  heroSlides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === idx);
+  });
+}
+function nextHeroSlide() {
+  heroCurrent = (heroCurrent + 1) % heroSlides.length;
+  showHeroSlide(heroCurrent);
+}
+function prevHeroSlide() {
+  heroCurrent = (heroCurrent - 1 + heroSlides.length) % heroSlides.length;
+  showHeroSlide(heroCurrent);
+}
+if (heroArrowLeft && heroArrowRight) {
+  heroArrowLeft.addEventListener('click', prevHeroSlide);
+  heroArrowRight.addEventListener('click', nextHeroSlide);
+  showHeroSlide(heroCurrent);
+} 
