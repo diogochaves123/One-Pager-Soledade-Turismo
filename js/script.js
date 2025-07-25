@@ -27,7 +27,9 @@ navLinks.forEach(link => {
 const whatsappLink = document.getElementById('whatsapp-link');
 const numero = '558008180800'; // Número real da empresa
 const mensagem = encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços da Soledade Turismo.');
-whatsappLink.href = `https://wa.me/${numero}?text=${mensagem}`;
+if (whatsappLink) {
+  whatsappLink.href = `https://wa.me/${numero}?text=${mensagem}`;
+}
 
 // Animação suave ao rolar para as seções
 function revealSectionsOnScroll() {
@@ -62,16 +64,18 @@ window.addEventListener('DOMContentLoaded', revealSectionsOnScroll);
 
 // Botão de voltar ao topo
 const btnTopo = document.getElementById('btn-topo');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    btnTopo.classList.add('show');
-  } else {
-    btnTopo.classList.remove('show');
-  }
-});
-btnTopo.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (btnTopo) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      btnTopo.classList.add('show');
+    } else {
+      btnTopo.classList.remove('show');
+    }
+  });
+  btnTopo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // Carrossel de imagens e frases
 const carouselSlides = document.querySelectorAll('.carousel-slide');
@@ -92,9 +96,11 @@ function prevSlide() {
   currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
   showSlide(currentSlide);
 }
-arrowLeft.addEventListener('click', prevSlide);
-arrowRight.addEventListener('click', nextSlide);
-showSlide(currentSlide);
+if (arrowLeft && arrowRight) {
+  arrowLeft.addEventListener('click', prevSlide);
+  arrowRight.addEventListener('click', nextSlide);
+  showSlide(currentSlide);
+}
 
 // Carrossel do topo (hero-carousel)
 const heroSlides = document.querySelectorAll('.hero-slide');
