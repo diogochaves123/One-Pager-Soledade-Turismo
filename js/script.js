@@ -1,5 +1,31 @@
 // JavaScript para o One Pager moderno da Soledade Turismo
 
+// Função para gerar mensagem baseada no horário
+function getGreetingMessage() {
+  const hour = new Date().getHours();
+  
+  if (hour >= 5 && hour < 12) {
+    return "Bom dia, gostaria de solicitar um orçamento!";
+  } else if (hour >= 12 && hour < 18) {
+    return "Boa tarde, gostaria de solicitar um orçamento!";
+  } else {
+    return "Boa noite, gostaria de solicitar um orçamento!";
+  }
+}
+
+// Atualizar links do WhatsApp com mensagem automática
+function updateWhatsAppLinks() {
+  const whatsappNumber = '558008180800';
+  const message = encodeURIComponent(getGreetingMessage());
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+  
+  // Atualizar todos os links do WhatsApp
+  const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+  whatsappLinks.forEach(link => {
+    link.href = whatsappUrl;
+  });
+}
+
 // Navegação suave
 document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-link');
@@ -209,6 +235,9 @@ window.addEventListener('load', function() {
 document.addEventListener('DOMContentLoaded', function() {
   // Mostra o primeiro depoimento
   showReview(0);
+  
+  // Atualizar links do WhatsApp com mensagem automática
+  updateWhatsAppLinks();
   
   // Adiciona classe de carregamento
   document.body.style.opacity = '0';
