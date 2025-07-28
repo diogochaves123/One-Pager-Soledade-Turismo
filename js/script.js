@@ -1,127 +1,225 @@
-// script.js
-// Menu responsivo
-const menuToggle = document.getElementById('menu-toggle');
-const navUl = document.querySelector('nav ul');
-menuToggle.addEventListener('click', () => {
-  navUl.classList.toggle('active');
-});
+// JavaScript para o One Pager moderno da Soledade Turismo
 
-// Scroll suave
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-      window.scrollTo({
-        top: targetSection.offsetTop - 20,
-        behavior: 'smooth'
-      });
-      navUl.classList.remove('active'); // Fecha menu mobile
-    }
+// Navegação suave
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        const headerHeight = document.querySelector('.modern-header').offsetHeight;
+        const targetPosition = targetSection.offsetTop - headerHeight - 20;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 });
 
-// Botão WhatsApp com mensagem personalizada
-const whatsappLink = document.getElementById('whatsapp-link');
-const numero = '558008180800'; // Número real da empresa
-const mensagem = encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços da Soledade Turismo.');
-if (whatsappLink) {
-  whatsappLink.href = `https://wa.me/${numero}?text=${mensagem}`;
+// Header com efeito de scroll
+window.addEventListener('scroll', function() {
+  const header = document.querySelector('.modern-header');
+  if (window.scrollY > 100) {
+    header.style.background = 'rgba(255, 255, 255, 0.98)';
+    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+  } else {
+    header.style.background = 'rgba(255, 255, 255, 0.95)';
+    header.style.boxShadow = 'none';
+  }
+});
+
+// Carrossel de depoimentos
+let currentReview = 0;
+const reviewSlides = document.querySelectorAll('.review-slide');
+const dots = document.querySelectorAll('.dot');
+
+function showReview(index) {
+  // Esconde todos os slides
+  reviewSlides.forEach(slide => {
+    slide.classList.remove('active');
+  });
+  
+  // Remove classe active de todos os dots
+  dots.forEach(dot => {
+    dot.classList.remove('active');
+  });
+  
+  // Mostra o slide atual
+  if (reviewSlides[index]) {
+    reviewSlides[index].classList.add('active');
+  }
+  
+  // Ativa o dot atual
+  if (dots[index]) {
+    dots[index].classList.add('active');
+  }
 }
 
-// Animação suave ao rolar para as seções
-function revealSectionsOnScroll() {
+function changeReview(direction) {
+  currentReview += direction;
+  
+  if (currentReview >= reviewSlides.length) {
+    currentReview = 0;
+  } else if (currentReview < 0) {
+    currentReview = reviewSlides.length - 1;
+  }
+  
+  showReview(currentReview);
+}
+
+function goToReview(index) {
+  currentReview = index - 1; // Ajusta para o índice baseado em 0
+  showReview(currentReview);
+}
+
+// Adiciona event listeners para os dots
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    goToReview(index + 1);
+  });
+});
+
+// Auto-play do carrossel
+setInterval(() => {
+  changeReview(1);
+}, 10000);
+
+// Animação de entrada das seções
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Observa todas as seções
+document.addEventListener('DOMContentLoaded', function() {
   const sections = document.querySelectorAll('section');
-  const trigger = window.innerHeight * 0.92;
   sections.forEach(section => {
-    const top = section.getBoundingClientRect().top;
-    if (top < trigger) {
-      section.classList.add('visible');
-    }
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
   });
+});
 
-  // Destacar menu ativo
-  let currentSection = sections[0];
-  let minDist = Math.abs(sections[0].getBoundingClientRect().top - 120);
-  sections.forEach(section => {
-    const dist = Math.abs(section.getBoundingClientRect().top - 120);
-    if (dist < minDist) {
-      minDist = dist;
-      currentSection = section;
-    }
-  });
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + currentSection.id) {
-      link.classList.add('active');
-    }
-  });
-}
-window.addEventListener('scroll', revealSectionsOnScroll);
-window.addEventListener('DOMContentLoaded', revealSectionsOnScroll);
+// Newsletter form
+document.addEventListener('DOMContentLoaded', function() {
+  const newsletterForm = document.querySelector('.newsletter-form');
+  const emailInput = document.querySelector('.email-input');
+  const subscribeButton = document.querySelector('.subscribe-button');
+  
+  if (newsletterForm && emailInput && subscribeButton) {
+    subscribeButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim();
+      
+      if (email && isValidEmail(email)) {
+        // Simula envio do formulário
+        subscribeButton.textContent = 'Inscrito!';
+        subscribeButton.style.background = 'var(--accent-color)';
+        emailInput.value = '';
+        
+        setTimeout(() => {
+          subscribeButton.textContent = 'Inscrever-se';
+          subscribeButton.style.background = 'var(--gradient-accent)';
+        }, 3000);
+      } else {
+        emailInput.style.border = '2px solid #e74c3c';
+        emailInput.placeholder = 'Email inválido';
+        
+        setTimeout(() => {
+          emailInput.style.border = 'none';
+          emailInput.placeholder = 'Seu email*';
+        }, 3000);
+      }
+    });
+  }
+});
 
-// Botão de voltar ao topo
-const btnTopo = document.getElementById('btn-topo');
-if (btnTopo) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      btnTopo.classList.add('show');
-    } else {
-      btnTopo.classList.remove('show');
-    }
-  });
-  btnTopo.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-// Carrossel de imagens e frases
-const carouselSlides = document.querySelectorAll('.carousel-slide');
-const arrowLeft = document.querySelector('.carousel-arrow.left');
-const arrowRight = document.querySelector('.carousel-arrow.right');
-let currentSlide = 0;
-
-function showSlide(idx) {
-  carouselSlides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === idx);
-  });
-}
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % carouselSlides.length;
-  showSlide(currentSlide);
-}
-function prevSlide() {
-  currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
-  showSlide(currentSlide);
-}
-if (arrowLeft && arrowRight) {
-  arrowLeft.addEventListener('click', prevSlide);
-  arrowRight.addEventListener('click', nextSlide);
-  showSlide(currentSlide);
+// Validação de email
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
 
-// Carrossel do topo (hero-carousel)
-const heroSlides = document.querySelectorAll('.hero-slide');
-const heroArrowLeft = document.querySelector('.hero-arrow.left');
-const heroArrowRight = document.querySelector('.hero-arrow.right');
-let heroCurrent = 0;
-function showHeroSlide(idx) {
-  heroSlides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === idx);
+// Efeito de hover nos cards de features
+document.addEventListener('DOMContentLoaded', function() {
+  const featureCards = document.querySelectorAll('.feature-card');
+  
+  featureCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-10px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
   });
-}
-function nextHeroSlide() {
-  heroCurrent = (heroCurrent + 1) % heroSlides.length;
-  showHeroSlide(heroCurrent);
-}
-function prevHeroSlide() {
-  heroCurrent = (heroCurrent - 1 + heroSlides.length) % heroSlides.length;
-  showHeroSlide(heroCurrent);
-}
-if (heroArrowLeft && heroArrowRight) {
-  heroArrowLeft.addEventListener('click', prevHeroSlide);
-  heroArrowRight.addEventListener('click', nextHeroSlide);
-  showHeroSlide(heroCurrent);
-} 
+});
+
+// Smooth scroll para botões
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('a[href^="#"]');
+  
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      
+      if (href !== '#') {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerHeight = document.querySelector('.modern-header').offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+});
+
+// Efeito de loading da página
+window.addEventListener('load', function() {
+  document.body.style.opacity = '1';
+});
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', function() {
+  // Mostra o primeiro depoimento
+  showReview(0);
+  
+  // Adiciona classe de carregamento
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.5s ease';
+  
+  // Remove classe de carregamento após um breve delay
+  setTimeout(() => {
+    document.body.style.opacity = '1';
+  }, 100);
+});
+
+// Funções globais para o carrossel (para uso nos onclick do HTML)
+window.changeReview = changeReview;
+window.currentReview = goToReview; 

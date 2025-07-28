@@ -3,159 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soledade Turismo</title>
+  <title>Soledade Turismo - Reinventando a Experiência de Viagem</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="top-bar">
-    <div class="top-bar-content">
-      <div class="top-bar-left">
-        <span class="top-email"><span class="icon-email"></span> soledadeturismo@gmail.com</span>
-        <span class="top-phone"><span class="icon-phone"></span> (54) 99999-9999</span>
+  <!-- Header Moderno -->
+  <header class="modern-header">
+    <div class="header-container">
+      <div class="logo-section">
+        <img src="img/logo.png" alt="Soledade Turismo" class="header-logo">
       </div>
-      <div class="top-bar-right">
-        <a href="https://wa.me/558008180800" class="top-social" target="_blank" aria-label="WhatsApp"><span class="icon-whatsapp"></span></a>
-        <a href="#" class="top-social" target="_blank" aria-label="Instagram"><span class="icon-instagram"></span></a>
-        <a href="#" class="top-social" target="_blank" aria-label="Facebook"><span class="icon-facebook"></span></a>
-      </div>
-    </div>
-  </div>
-  <header>
-    <div class="header-logo-area">
-      <img src="img/logo.png" alt="Logo Soledade Turismo" id="logo">
-      <nav id="main-nav">
-        <ul>
-          <li><a href="#sobre" class="nav-link">Sobre</a></li>
-          <li><a href="#solucoes" class="nav-link">Soluções</a></li>
-          <li><a href="#contato" class="nav-link">Contato</a></li>
-        </ul>
+      <nav class="modern-nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#beneficios" class="nav-link">Benefícios</a>
+        <a href="#depoimentos" class="nav-link">Depoimentos</a>
       </nav>
+      <div class="header-actions">
+        <a href="https://wa.me/558008180800" class="header-phone" target="_blank">+55 800 818 0800</a>
+        <a href="https://wa.me/558008180800" class="cta-button" target="_blank">Solicitar Orçamento</a>
+      </div>
     </div>
-    <button id="menu-toggle" aria-label="Abrir menu">☰</button>
   </header>
-  <section class="hero-carousel">
-    <button class="hero-arrow left" aria-label="Anterior">&#10094;</button>
-    <div class="hero-slide left-content" style="background-image: linear-gradient(rgba(20,30,50,0.45), rgba(20,30,50,0.55)), url('img/onibus.png');">
-      <div class="hero-content">
-        <h1 class="hero-title">Seu destino, nossa tradição.</h1>
-        <p class="hero-subtitle">Desde 1983, transportando gerações com qualidade, tecnologia e segurança.</p>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-background">
+      <div class="hero-overlay"></div>
+      <img src="img/dois onibus.png" alt="Frota Soledade Turismo" class="hero-bg-image">
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="hero-brand">Soledade Turismo</span>
+          <span class="hero-tagline">Reinventando a Experiência de Viagem</span>
+        </h1>
+        <p class="hero-description">
+          Desde 1983, transportando gerações com qualidade, tecnologia e segurança. 
+          Sua jornada começa aqui, onde tradição encontra inovação.
+        </p>
+        <div class="hero-buttons">
+          <a href="#beneficios" class="primary-button">Conheça Nossos Serviços</a>
+          <a href="https://wa.me/558008180800" class="secondary-button" target="_blank">Fale Conosco</a>
+        </div>
       </div>
     </div>
-    <div class="hero-slide left-content" style="background-image: linear-gradient(rgba(20,30,50,0.45), rgba(20,30,50,0.55)), url('img/onibus2.png');">
-      <div class="hero-content">
-        <h1 class="hero-title">Viajar com segurança é viajar com confiança.</h1>
-        <p class="hero-subtitle">Desde 1983, referência em transporte de pessoas no Rio Grande do Sul.</p>
-      </div>
-    </div>
-    <div class="hero-slide" style="background-image: linear-gradient(rgba(20,30,50,0.45), rgba(20,30,50,0.55)), url('img/onibus3.png');">
-      <div class="hero-content">
-        <h1 class="hero-title">Tradição que move você.</h1>
-        <p class="hero-subtitle">Há mais de 40 anos, conectando destinos com qualidade e responsabilidade.</p>
-      </div>
-    </div>
-    <div class="hero-slide" style="background-image: linear-gradient(rgba(20,30,50,0.45), rgba(20,30,50,0.55)), url('img/onibus4.png');">
-      <div class="hero-content">
-        <h1 class="hero-title">Mais que transporte, uma experiência de confiança.</h1>
-        <p class="hero-subtitle">Desde 1983, destacando-se pelo atendimento personalizado e frota de excelência.</p>
-      </div>
-    </div>
-    <div class="hero-slide left-content" style="background-image: linear-gradient(rgba(20,30,50,0.45), rgba(20,30,50,0.55)), url('img/onibus5.png');">
-      <div class="hero-content">
-        <h1 class="hero-title">Levando você além do destino.</h1>
-        <p class="hero-subtitle">Há décadas, inovando no transporte com tecnologia, conforto e segurança.</p>
-      </div>
-    </div>
-    <div class="hero-slide left-content" style="background-image: linear-gradient(rgba(20,30,50,0.45), rgba(20,30,50,0.55)), url('img/onibus6.png');">
-      <div class="hero-content">
-        <h1 class="hero-title">Conectando pessoas, construindo histórias.</h1>
-        <p class="hero-subtitle">Desde 1983, transportando gerações com dedicação e compromisso.</p>
-      </div>
-    </div>
-    <button class="hero-arrow right" aria-label="Próximo">&#10095;</button>
   </section>
-  <main>
-    <section id="sobre">
-      <h2>Sobre a Soledade Turismo</h2>
-      <p>Somos uma empresa especializada em transporte de pessoas, atuante em todo o Rio Grande do Sul desde 1983.</p>
-      <p>A experiência em levar pessoas ao seu destino com segurança, conforto e agilidade nos posicionou entre as mais importantes e tradicionais empresas de transporte da nossa região.</p>
-      <p>Disponibilizamos serviço de fretamento empresarial, turístico e escolar.</p>
-      <ul>
-        <li>Quer organizar aquele passeio com a turma?</li>
-        <li>Transportar os funcionários de casa para o trabalho e do trabalho para casa?</li>
-        <li>Garantir segurança para estudantes irem e voltarem da escola e da faculdade?</li>
-      </ul>
-      <p>Na Soledade Turismo você encontra qualidade, confiança, tecnologia e tradição.</p>
-      <ul>
-        <li>Garantia do melhor quadro de motoristas</li>
-        <li>Frota coberta por seguro e documentação em dia</li>
-        <li>Manutenção da frota especializada e constante</li>
-        <li>Atendimento personalizado e eficiente</li>
-        <li>Licenças necessárias para o serviço de fretamento</li>
-        <li>Limpeza dos veículos com processos e produtos adequados</li>
-      </ul>
-    </section>
-    <section id="solucoes">
-      <h2>Nossos Serviços</h2>
-      <ul>
-        <li>Viagens</li>
-        <li>Turismo</li>
-        <li>Fretamento para empresas</li>
-        <li>Transporte escolar</li>
-        <li>Fretamento eventual</li>
-        <li>Linhas intermunicipais</li>
-      </ul>
-    </section>
-    <section id="frota">
-      <h2>Nossa Frota</h2>
-      <p>Possuímos uma frota com veículos que passam por revisão e limpeza constante por profissionais capacitados para tais funções.</p>
-      <p><strong>Veículos Executivos, com os seguintes opcionais:</strong></p>
-      <ul>
-        <li>Bancos reclináveis</li>
-        <li>Luzes individuais</li>
-        <li>Bagageiro de mão</li>
-        <li>Câmeras de segurança</li>
-        <li>Banheiro pressurizado</li>
-        <li>Cinto de segurança em todas as poltronas</li>
-        <li>Rastreamento via satélite 24 horas</li>
-        <li>Ar Condicionado</li>
-        <li>Tomadas USB para carga de celular</li>
-        <li>Calefação</li>
-      </ul>
-      <p>Além disso, nossos veículos possuem registro, seguro e vistorias exigidos pelo DAER/RS e DETRAN/RS para efetuar Viagens, Turismo, Fretamentos, Linhas Intermunicipais e Transporte Escolar.</p>
-    </section>
-    <section id="diferenciais">
-      <h2>Nossos Diferenciais</h2>
-      <ul>
-        <li><strong>Atendimento:</strong> Desde o primeiro contato do cliente, o nosso atendimento personalizado e especializado garante uma experiência de conforto e qualidade que vai muito além da viagem.</li>
-        <li><strong>Qualidade:</strong> Além de possuir uma frota 100% revisada, nos destacamos na qualidade dos colaboradores e procedimentos no transporte de pessoas.</li>
-        <li><strong>Segurança:</strong> Todos os nossos veículos são equipados com Cronotacógrafos, Rastreamento via GPS e Câmeras de segurança para monitorar as viagens e torná-las mais seguras.</li>
-        <li><strong>Tradição:</strong> Com uma história de mais de 40 anos, já transportamos gerações. Hoje somamos experiência em transporte, com a busca constante de inovação e aperfeiçoamento.</li>
-      </ul>
-    </section>
-    <section id="mapa">
-      <h2>Nossa Localização</h2>
-      <div class="mapa-container">
-        <iframe
-          src="https://www.google.com/maps?q=Av.+Julio+de+Castilhos,+1465+-+Soledade+-+RS&output=embed"
-          width="100%" height="340" style="border:0; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.10);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <!-- Features Section -->
+  <section id="beneficios" class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚌</div>
+          <h3>Frota Moderna</h3>
+          <p>Veículos executivos com ar condicionado, Wi-Fi, tomadas USB e conforto premium para sua viagem.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Segurança Total</h3>
+          <p>Rastreamento GPS 24h, câmeras de segurança e motoristas experientes para sua tranquilidade.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <h3>40 Anos de Experiência</h3>
+          <p>Mais de quatro décadas conectando destinos e construindo confiança no Rio Grande do Sul.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Atendimento Personalizado</h3>
+          <p>Desde o primeiro contato, oferecemos soluções sob medida para suas necessidades de transporte.</p>
+        </div>
       </div>
-    </section>
-    <section id="contato">
-      <h2>Entre em Contato</h2>
-      <div class="contato-empresa">
-        <div class="contato-nome">Soledade Turismo LTDA.</div>
-        <div class="contato-cnpj">CNPJ: 88.904.586/0001-60</div>
-        <div class="contato-endereco">Av. Julio de Castilhos, 1465 - Soledade - RS</div>
+    </div>
+  </section>
+
+  <!-- As Featured On Section -->
+  <section class="featured-section">
+    <div class="container">
+      <h2>Como Visto Em:</h2>
+      <div class="featured-logos">
+        <div class="logo-item">Rio Grande do Sul</div>
+        <div class="logo-item">Turismo Nacional</div>
+        <div class="logo-item">Transporte Executivo</div>
+        <div class="logo-item">Fretamento Premium</div>
+        <div class="logo-item">Viagens Corporativas</div>
+        <div class="logo-item">Turismo Escolar</div>
       </div>
-      <p>Fale conosco pelo WhatsApp ou email:</p>
-      <a class="whatsapp-btn" id="whatsapp-link" href="#" target="_blank">WhatsApp</a>
-      <a class="email-btn" href="mailto:soledadeturismo@gmail.com">Email</a>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2024 Soledade Turismo. Todos os direitos reservados.</p>
+    </div>
+  </section>
+
+  <!-- Product Showcase -->
+  <section class="showcase-section">
+    <div class="container">
+      <div class="showcase-content">
+        <div class="showcase-image">
+          <img src="img/tres onibus.png" alt="Frota Executiva Soledade Turismo">
+        </div>
+        <div class="showcase-text">
+          <h2>Viagem Como Você Nunca Experimentou Antes</h2>
+          <p>
+            Nossa frota executiva oferece o máximo em conforto e tecnologia. 
+            Com bancos reclináveis, bagageiro individual, banheiro pressurizado e 
+            todos os recursos necessários para uma viagem perfeita.
+          </p>
+          <a href="https://wa.me/558008180800" class="primary-button" target="_blank">Solicitar Orçamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="depoimentos" class="reviews-section">
+    <div class="container">
+      <h2>Depoimentos</h2>
+      <div class="reviews-carousel">
+        <div class="review-slide active">
+          <div class="review-content">
+            <p>"Excelente serviço! A Soledade Turismo sempre supera nossas expectativas. 
+            Motoristas profissionais, veículos impecáveis e pontualidade exemplar."</p>
+            <div class="review-author">- Vibra</div>
+          </div>
+        </div>
+        <div class="review-slide">
+          <div class="review-content">
+            <p>"A Soledade Turismo é sinônimo de confiabilidade e excelência. 
+            Seu compromisso com a qualidade e pontualidade nos faz confiar plenamente em seus serviços há anos."</p>
+            <div class="review-author">- CCR ViaSul</div>
+          </div>
+        </div>
+        <div class="review-slide">
+          <div class="review-content">
+            <p>"A Soledade Turismo é nossa parceira de confiança para viagens universitárias. 
+            Seus serviços garantem que nossos alunos tenham uma experiência segura e confortável em todas as viagens."</p>
+            <div class="review-author">- CEUS</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-arrow left" onclick="changeReview(-1)">‹</button>
+        <div class="carousel-dots">
+          <span class="dot active" onclick="currentReview(1)"></span>
+          <span class="dot" onclick="currentReview(2)"></span>
+          <span class="dot" onclick="currentReview(3)"></span>
+        </div>
+        <button class="carousel-arrow right" onclick="changeReview(1)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-background">
+      <img src="img/onibus amarelo.png" alt="Ônibus Soledade Turismo" class="cta-bg-image">
+      <div class="cta-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="cta-content">
+        <h2>Mantenha-se Conectado</h2>
+        <p>Receba nossas ofertas especiais e novidades sobre destinos</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Seu email*" class="email-input">
+          <button class="subscribe-button">Inscrever-se</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="modern-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>NAVEGAÇÃO</h4>
+          <a href="#home">HOME</a>
+          <a href="#beneficios">BENEFÍCIOS</a>
+          <a href="#depoimentos">DEPOIMENTOS</a>
+        </div>
+        <div class="footer-section">
+          <h4>SERVIÇOS</h4>
+          <a href="#">FRETAMENTO</a>
+          <a href="#">TURISMO</a>
+          <a href="#">TRANSPORTE ESCOLAR</a>
+          <a href="#">VIAGENS CORPORATIVAS</a>
+        </div>
+        <div class="footer-section">
+          <h4>CONTATO</h4>
+          <a href="https://wa.me/558008180800" target="_blank">+55 800 818 0800</a>
+          <a href="mailto:soledadeturismo@gmail.com">soledadeturismo@gmail.com</a>
+          <a href="#">Av. Julio de Castilhos, 1465 - Soledade/RS</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Soledade Turismo. Todos os direitos reservados.</p>
+      </div>
+    </div>
   </footer>
-  <button id="btn-topo" aria-label="Voltar ao topo">↑</button>
+
   <script src="js/script.js"></script>
 </body>
 </html> 
