@@ -188,10 +188,11 @@ body {
   font-size: 5rem;
   font-weight: 900;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--white) 100%);
+  background: linear-gradient(135deg, #4da6ff 0%, #006BB5 50%, #1489C9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(0, 107, 181, 0.3));
 }
 
 .hero-tagline {
@@ -204,7 +205,7 @@ body {
 .hero-description {
   font-size: 1.4rem;
   margin-bottom: 2.5rem;
-  color: var(--gray-200);
+  color: var(--white);
   line-height: 1.8;
 }
 
