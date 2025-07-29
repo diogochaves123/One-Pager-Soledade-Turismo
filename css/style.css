@@ -678,6 +678,35 @@ body {
   .email-input {
     min-width: 100%;
   }
+  
+  /* Estilos para depoimentos no mobile */
+  .reviews-carousel {
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  .review-slide {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .review-slide:not(.active) {
+    transform: translateX(100%);
+  }
+  
+  .carousel-dots {
+    display: none; /* Remove os pontos azuis no mobile */
+  }
+  
+  .carousel-arrow {
+    display: none; /* Remove as setas no mobile */
+  }
+  
+  .carousel-controls {
+    display: none; /* Remove os controles no mobile */
+  }
 }
 
 @media (max-width: 480px) {

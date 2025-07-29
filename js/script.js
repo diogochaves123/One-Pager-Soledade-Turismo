@@ -117,6 +117,49 @@ setInterval(() => {
   changeReview(1);
 }, 10000);
 
+// Funcionalidade de swipe para mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleSwipe() {
+  const swipeThreshold = 50; // Distância mínima para considerar um swipe
+  const diff = touchStartX - touchEndX;
+  
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      // Swipe para a esquerda - próximo depoimento
+      changeReview(1);
+    } else {
+      // Swipe para a direita - depoimento anterior
+      changeReview(-1);
+    }
+  }
+}
+
+// Adiciona event listeners para touch apenas em dispositivos móveis
+function addSwipeListeners() {
+  const carousel = document.querySelector('.reviews-carousel');
+  
+  if (carousel && window.innerWidth <= 768) {
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+  }
+}
+
+// Chama a função quando a página carrega
+document.addEventListener('DOMContentLoaded', function() {
+  addSwipeListeners();
+  
+  // Re-adiciona listeners quando a janela é redimensionada
+  window.addEventListener('resize', addSwipeListeners);
+});
+
 // Animação de entrada das seções
 const observerOptions = {
   threshold: 0.1,
