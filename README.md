@@ -95,14 +95,6 @@ O site é totalmente responsivo e se adapta a:
 7. **Newsletter** - Captura de leads
 8. **Footer** - Links e informações
 
-## 🚀 Como Usar
-
-1. Abra o arquivo `index.html` em um navegador
-2. Navegue pelas seções usando o menu superior
-3. Interaja com o carrossel de depoimentos
-4. Teste o formulário de newsletter
-5. Verifique a responsividade redimensionando a janela
-
 ## 📞 Informações de Contato
 
 - **Empresa**: Soledade Turismo LTDA
@@ -128,6 +120,3 @@ O site é totalmente responsivo e se adapta a:
 - **Profissionalismo**: Design moderno e confiável
 - **Mobile-first**: Experiência otimizada para dispositivos móveis
 
----
-
-**Desenvolvido com ❤️ para a Soledade Turismo**
