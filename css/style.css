@@ -626,20 +626,31 @@ body {
   }
   
   .hero-brand {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.3rem;
   }
   
   .hero-tagline {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
   }
   
   .hero-description {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
   }
   
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .primary-button,
+  .secondary-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
   
   .showcase-content {
@@ -671,11 +682,29 @@ body {
 
 @media (max-width: 480px) {
   .hero-brand {
-    font-size: 3rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
   }
   
   .hero-tagline {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .hero-buttons {
+    gap: 0.6rem;
+  }
+  
+  .primary-button,
+  .secondary-button {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.9rem;
   }
   
   .showcase-text h2 {
@@ -688,5 +717,25 @@ body {
   
   .cta-content h2 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-brand {
+    font-size: 1.8rem;
+  }
+  
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 0.85rem;
+  }
+  
+  .primary-button,
+  .secondary-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
   }
 } 
