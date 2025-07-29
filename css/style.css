@@ -683,17 +683,34 @@ body {
   .reviews-carousel {
     overflow: hidden;
     touch-action: pan-y pinch-zoom;
+    height: 300px; /* Altura fixa para todos os depoimentos */
+    position: relative;
   }
   
   .review-slide {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     opacity: 1;
     transform: translateX(0);
     transition: transform 0.3s ease;
+    height: 100%; /* Ocupa toda a altura do container */
+    display: flex;
+    align-items: center;
   }
   
   .review-slide:not(.active) {
     transform: translateX(100%);
+  }
+  
+  .review-content {
+    width: 100%;
+    height: auto;
+    max-height: 280px; /* Altura máxima para o conteúdo */
+    overflow-y: auto; /* Permite scroll se o conteúdo for muito grande */
+    padding: 2rem 1.5rem;
+    margin: 0;
   }
   
   .carousel-dots {
