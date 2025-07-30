@@ -292,6 +292,166 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 
+// Careers Form Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const careersForm = document.getElementById('careers-form');
+  const fileInput = document.getElementById('curriculo');
+  const fileLabel = document.querySelector('.file-label .file-text');
+  
+  if (careersForm && fileInput && fileLabel) {
+    // File upload feedback
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        // Validate file size (5MB max)
+        if (file.size > 5 * 1024 * 1024) {
+          alert('Arquivo muito grande. Tamanho máximo: 5MB');
+          this.value = '';
+          fileLabel.textContent = 'Escolher arquivo';
+          return;
+        }
+        
+        // Validate file type
+        const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        if (!allowedTypes.includes(file.type)) {
+          alert('Tipo de arquivo não suportado. Use PDF, DOC ou DOCX');
+          this.value = '';
+          fileLabel.textContent = 'Escolher arquivo';
+          return;
+        }
+        
+        fileLabel.textContent = file.name;
+      } else {
+        fileLabel.textContent = 'Escolher arquivo';
+      }
+    });
+    
+    // Form submission
+    careersForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitButton = this.querySelector('.submit-button');
+      const originalText = submitButton.innerHTML;
+      
+      // Show loading state
+      submitButton.innerHTML = '<span class="button-text">Enviando...</span><span class="button-icon">⏳</span>';
+      submitButton.disabled = true;
+      
+      // Simulate form submission (replace with actual form handling)
+      setTimeout(() => {
+        // Success state
+        submitButton.innerHTML = '<span class="button-text">Enviado com Sucesso!</span><span class="button-icon">✅</span>';
+        submitButton.style.background = 'var(--accent-color)';
+        
+        // Reset form
+        careersForm.reset();
+        fileLabel.textContent = 'Escolher arquivo';
+        
+        // Show success message
+        showNotification('Candidatura enviada com sucesso! Entraremos em contato em breve.', 'success');
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitButton.innerHTML = originalText;
+          submitButton.style.background = 'var(--gradient-primary)';
+          submitButton.disabled = false;
+        }, 3000);
+      }, 2000);
+    });
+  }
+});
+
+// Notification system
+function showNotification(message, type = 'info') {
+  // Remove existing notifications
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach(notification => notification.remove());
+  
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <span class="notification-icon">${type === 'success' ? '✅' : 'ℹ️'}</span>
+      <span class="notification-message">${message}</span>
+      <button class="notification-close">×</button>
+    </div>
+  `;
+  
+  // Add styles
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+    color: white;
+    padding: 16px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    max-width: 400px;
+  `;
+  
+  // Add to page
+  document.body.appendChild(notification);
+  
+  // Animate in
+  setTimeout(() => {
+    notification.style.transform = 'translateX(0)';
+  }, 100);
+  
+  // Close button functionality
+  const closeButton = notification.querySelector('.notification-close');
+  closeButton.style.cssText = `
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+  `;
+  
+  closeButton.addEventListener('click', () => {
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => notification.remove(), 300);
+  });
+  
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.style.transform = 'translateX(100%)';
+      setTimeout(() => notification.remove(), 300);
+    }
+  }, 5000);
+}
+
+// Phone number formatting
+document.addEventListener('DOMContentLoaded', function() {
+  const phoneInput = document.getElementById('telefone');
+  
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.length <= 11) {
+        if (value.length <= 2) {
+          value = `(${value}`;
+        } else if (value.length <= 6) {
+          value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+        } else if (value.length <= 10) {
+          value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+        } else {
+          value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+        }
+      }
+      
+      e.target.value = value;
+    });
+  }
+});
+
 // Funções globais para o carrossel (para uso nos onclick do HTML)
 window.changeReview = changeReview;
 window.currentReview = goToReview; 

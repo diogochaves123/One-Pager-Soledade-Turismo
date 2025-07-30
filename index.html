@@ -14,11 +14,11 @@
       <div class="logo-section">
         <img src="img/logo.png" alt="Soledade Turismo" class="header-logo">
       </div>
-      <nav class="modern-nav">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#beneficios" class="nav-link">Benefícios</a>
-        <a href="#depoimentos" class="nav-link">Depoimentos</a>
-      </nav>
+             <nav class="modern-nav">
+         <a href="#home" class="nav-link">Home</a>
+         <a href="#beneficios" class="nav-link">Benefícios</a>
+         <a href="#trabalhe-conosco" class="nav-link">Trabalhe Conosco</a>
+       </nav>
       <div class="header-actions">
         <a href="https://wa.me/558008180800" class="header-phone" target="_blank">+55 800 818 0800</a>
         <a href="https://wa.me/558008180800" class="cta-button" target="_blank">Solicitar Orçamento</a>
@@ -113,41 +113,111 @@
     </div>
   </section>
 
-  <!-- Reviews Section -->
-  <section id="depoimentos" class="reviews-section">
+
+
+  <!-- Trabalhe Conosco Section -->
+  <section id="trabalhe-conosco" class="careers-section">
     <div class="container">
-      <h2>Depoimentos</h2>
-      <div class="reviews-carousel">
-        <div class="review-slide active">
-          <div class="review-content">
-            <p>"Excelente serviço! A Soledade Turismo sempre supera nossas expectativas. 
-            Motoristas profissionais, veículos impecáveis e pontualidade exemplar."</p>
-            <div class="review-author">- Vibra</div>
-          </div>
-        </div>
-        <div class="review-slide">
-          <div class="review-content">
-            <p>"A Soledade Turismo é sinônimo de confiabilidade e excelência. 
-            Seu compromisso com a qualidade e pontualidade nos faz confiar plenamente em seus serviços há anos."</p>
-            <div class="review-author">- CCR ViaSul</div>
-          </div>
-        </div>
-        <div class="review-slide">
-          <div class="review-content">
-            <p>"A Soledade Turismo é nossa parceira de confiança para viagens universitárias. 
-            Seus serviços garantem que nossos alunos tenham uma experiência segura e confortável em todas as viagens."</p>
-            <div class="review-author">- CEUS</div>
-          </div>
-        </div>
+      <div class="careers-header">
+        <h2>🚀 Trabalhe Conosco</h2>
+        <p>Faça parte da nossa equipe e ajude-nos a continuar conectando destinos e pessoas</p>
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-arrow left" onclick="changeReview(-1)">‹</button>
-        <div class="carousel-dots">
-          <span class="dot active" onclick="currentReview(1)"></span>
-          <span class="dot" onclick="currentReview(2)"></span>
-          <span class="dot" onclick="currentReview(3)"></span>
+      
+      <div class="careers-content">
+        <div class="careers-info">
+          <div class="careers-benefits">
+            <h3>Por que trabalhar na Soledade Turismo?</h3>
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <div class="benefit-icon">💼</div>
+                <h4>Plano de Carreira</h4>
+                <p>Crescimento profissional com oportunidades de desenvolvimento</p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">🏥</div>
+                <h4>Benefícios</h4>
+                <p>Plano de saúde, vale refeição e outros benefícios</p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">🤝</div>
+                <h4>Ambiente Familiar</h4>
+                <p>Empresa com 40 anos de tradição e valores sólidos</p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">📈</div>
+                <h4>Estabilidade</h4>
+                <p>Empresa consolidada no mercado de transporte</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="carousel-arrow right" onclick="changeReview(1)">›</button>
+        
+        <div class="careers-form-container">
+          <div class="form-card">
+            <h3>Envie seu Currículo</h3>
+            <p>Preencha os dados abaixo e anexe seu currículo</p>
+            
+            <form id="careers-form" class="careers-form" action="https://formspree.io/f/xyzppzeo" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="nome">Nome Completo *</label>
+                <input type="text" id="nome" name="nome" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="telefone">Telefone *</label>
+                <input type="tel" id="telefone" name="telefone" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="cargo">Cargo de Interesse *</label>
+                <select id="cargo" name="cargo" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="motorista">Motorista</option>
+                  <option value="auxiliar">Auxiliar de Motorista</option>
+                  <option value="atendente">Atendente</option>
+                  <option value="vendedor">Vendedor</option>
+                  <option value="administrativo">Administrativo</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="experiencia">Experiência Profissional</label>
+                <textarea id="experiencia" name="experiencia" rows="3" placeholder="Conte um pouco sobre sua experiência..."></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="curriculo">Currículo (PDF) *</label>
+                <div class="file-upload">
+                  <input type="file" id="curriculo" name="curriculo" accept=".pdf,.doc,.docx" required>
+                  <label for="curriculo" class="file-label">
+                    <span class="file-icon">📎</span>
+                    <span class="file-text">Escolher arquivo</span>
+                  </label>
+                </div>
+                <small>Aceitamos arquivos PDF, DOC ou DOCX (máx. 5MB)</small>
+              </div>
+              
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="concordo" required>
+                  <span class="checkmark"></span>
+                  Concordo com o tratamento dos meus dados pessoais *
+                </label>
+              </div>
+              
+              <button type="submit" class="submit-button">
+                <span class="button-text">Enviar Candidatura</span>
+                <span class="button-icon">📤</span>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -174,12 +244,12 @@
   <footer class="modern-footer">
     <div class="container">
       <div class="footer-content">
-        <div class="footer-section">
-          <h4>NAVEGAÇÃO</h4>
-          <a href="#home">HOME</a>
-          <a href="#beneficios">BENEFÍCIOS</a>
-          <a href="#depoimentos">DEPOIMENTOS</a>
-        </div>
+                 <div class="footer-section">
+           <h4>NAVEGAÇÃO</h4>
+           <a href="#home">HOME</a>
+           <a href="#beneficios">BENEFÍCIOS</a>
+           <a href="#trabalhe-conosco">TRABALHE CONOSCO</a>
+         </div>
         <div class="footer-section">
           <h4>SERVIÇOS</h4>
           <a href="#">FRETAMENTO</a>
