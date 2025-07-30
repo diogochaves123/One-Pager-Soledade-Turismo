@@ -195,10 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 
-// EmailJS Configuration
-(function() {
-  emailjs.init("44ipTYKhhYZIqkp89");
-})();
+// Removendo configuração do EmailJS - agora usamos Resend via Netlify Functions
 
 // Careers Form Functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -254,8 +251,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Form submission with EmailJS
-    careersForm.addEventListener('submit', function(e) {
+    // Form submission with Resend via Netlify Functions
+    careersForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const submitButton = this.querySelector('.submit-button');
@@ -265,51 +262,72 @@ document.addEventListener('DOMContentLoaded', function() {
       submitButton.innerHTML = '<span class="button-text">Enviando...</span><span class="button-icon">⏳</span>';
       submitButton.disabled = true;
       
-      // Get form data
-      const formData = new FormData(this);
-      const nome = formData.get('nome');
-      const email = formData.get('email');
-      const telefone = formData.get('telefone');
-      const cargo = formData.get('cargo');
-      const experiencia = formData.get('experiencia');
-      const curriculo = formData.get('curriculo');
-      
-      // Prepare email template parameters
-      const templateParams = {
-        to_name: 'Soledade Turismo',
-        from_name: nome,
-        from_email: email,
-        telefone: telefone,
-        cargo: cargo,
-        experiencia: experiencia || 'Não informado',
-        message: `Nova candidatura recebida de ${nome} para o cargo de ${cargo}`
-      };
-      
-      // Send email using EmailJS
-      emailjs.send('service_9ydcqhy', 'template_77q6bei', templateParams)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
+      try {
+        // Get form data
+        const formData = new FormData(this);
+        const nome = formData.get('nome');
+        const email = formData.get('email');
+        const telefone = formData.get('telefone');
+        const cargo = formData.get('cargo');
+        const experiencia = formData.get('experiencia');
+        const curriculoFile = formData.get('curriculo');
+        
+        // Prepare data for API
+        const data = {
+          nome,
+          email,
+          telefone,
+          cargo,
+          experiencia: experiencia || 'Não informado'
+        };
+        
+        // Handle file upload if present
+        if (curriculoFile && curriculoFile.size > 0) {
+          const reader = new FileReader();
+          const fileData = await new Promise((resolve) => {
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(curriculoFile);
+          });
           
+          // Extract base64 data
+          const base64Data = fileData.split(',')[1];
+          data.curriculo = {
+            name: curriculoFile.name,
+            type: curriculoFile.type,
+            data: base64Data
+          };
+        }
+        
+        // Send to Netlify Function
+        const response = await fetch('/.netlify/functions/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
           // Show success message
           showNotification('Candidatura enviada com sucesso! Entraremos em contato em breve.', 'success');
           
           // Reset form
           careersForm.reset();
           fileLabel.textContent = 'Escolher arquivo';
-          
-          // Reset button
-          submitButton.innerHTML = originalText;
-          submitButton.disabled = false;
-        }, function(error) {
-          console.log('FAILED...', error);
-          
-          // Show error message
-          showNotification('Erro ao enviar candidatura. Tente novamente.', 'error');
-          
-          // Reset button
-          submitButton.innerHTML = originalText;
-          submitButton.disabled = false;
-        });
+        } else {
+          throw new Error(result.error || 'Erro ao enviar candidatura');
+        }
+        
+      } catch (error) {
+        console.error('Erro:', error);
+        showNotification('Erro ao enviar candidatura. Tente novamente.', 'error');
+      } finally {
+        // Reset button
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+      }
     });
   }
 });

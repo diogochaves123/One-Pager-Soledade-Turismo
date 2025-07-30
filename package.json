@@ -1,0 +1,19 @@
+{
+  "name": "soledade-turismo",
+  "version": "1.0.0",
+  "description": "Site da Soledade Turismo com formulário de candidatura",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Build completed'"
+  },
+  "dependencies": {
+    "resend": "^3.0.0"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^2.0.0"
+  },
+  "keywords": ["turismo", "transporte", "candidatura"],
+  "author": "Soledade Turismo",
+  "license": "MIT"
+} 
