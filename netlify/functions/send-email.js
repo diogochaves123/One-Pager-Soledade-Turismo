@@ -53,10 +53,10 @@ exports.handler = async (event, context) => {
       });
     }
 
-    // Enviar email
-    const { data, error } = await resend.emails.send({
-      from: 'Soledade Turismo <noreply@tisoledadeturismo.com>',
-      to: ['tisoledadeturismo@gmail.com'],
+          // Enviar email
+      const { data, error } = await resend.emails.send({
+        from: 'Soledade Turismo <onboarding@resend.dev>',
+        to: ['tisoledadeturismo@gmail.com'],
       subject: 'Nova Candidatura - Soledade Turismo',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
