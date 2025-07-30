@@ -195,6 +195,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 
+// EmailJS Configuration
+(function() {
+  emailjs.init("44ipTYKhhYZIqkp89");
+})();
+
 // Careers Form Functionality
 document.addEventListener('DOMContentLoaded', function() {
   const careersForm = document.getElementById('careers-form');
@@ -249,8 +254,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Form submission
+    // Form submission with EmailJS
     careersForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
       const submitButton = this.querySelector('.submit-button');
       const originalText = submitButton.innerHTML;
       
@@ -258,10 +265,51 @@ document.addEventListener('DOMContentLoaded', function() {
       submitButton.innerHTML = '<span class="button-text">Enviando...</span><span class="button-icon">⏳</span>';
       submitButton.disabled = true;
       
-      // Let the form submit naturally to Formspree
-      // The form will redirect to Formspree's success page
-      // No need to prevent default or show notification here
-      // Formspree will handle the redirect
+      // Get form data
+      const formData = new FormData(this);
+      const nome = formData.get('nome');
+      const email = formData.get('email');
+      const telefone = formData.get('telefone');
+      const cargo = formData.get('cargo');
+      const experiencia = formData.get('experiencia');
+      const curriculo = formData.get('curriculo');
+      
+      // Prepare email template parameters
+      const templateParams = {
+        to_name: 'Soledade Turismo',
+        from_name: nome,
+        from_email: email,
+        telefone: telefone,
+        cargo: cargo,
+        experiencia: experiencia || 'Não informado',
+        message: `Nova candidatura recebida de ${nome} para o cargo de ${cargo}`
+      };
+      
+      // Send email using EmailJS
+      emailjs.send('service_9ydcqhy', 'template_77q6bei', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          
+          // Show success message
+          showNotification('Candidatura enviada com sucesso! Entraremos em contato em breve.', 'success');
+          
+          // Reset form
+          careersForm.reset();
+          fileLabel.textContent = 'Escolher arquivo';
+          
+          // Reset button
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+        }, function(error) {
+          console.log('FAILED...', error);
+          
+          // Show error message
+          showNotification('Erro ao enviar candidatura. Tente novamente.', 'error');
+          
+          // Reset button
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+        });
     });
   }
 });
