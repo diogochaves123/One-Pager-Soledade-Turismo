@@ -1,122 +1,98 @@
-# Soledade Turismo - One Pager Moderno
+# Soledade Turismo - Website
 
-## 🚌 Sobre o Projeto
+Website moderno e responsivo para a empresa Soledade Turismo, com seção "Trabalhe Conosco" integrada.
 
-Este é um One Pager moderno e responsivo para a **Soledade Turismo**, uma empresa de transporte com mais de 40 anos de experiência no Rio Grande do Sul. O design foi inspirado em modelos modernos de One Pager, criando uma experiência visual impactante e profissional.
+## 🚀 Funcionalidades
 
-## ✨ Características do Design
+### ✅ Implementado
+- **Design moderno e responsivo**
+- **Seção "Trabalhe Conosco"** com formulário completo
+- **Integração com Netlify Forms** para recebimento de candidaturas
+- **Validação de arquivos** (PDF, DOC, DOCX até 5MB)
+- **Formatação automática de telefone**
+- **Feedback visual** para o usuário
+- **Navegação suave** entre seções
 
-### 🎨 Design Moderno
-- **Layout One Pager**: Página única com navegação suave
-- **Tipografia Inter**: Fonte moderna e legível
-- **Gradientes**: Uso de gradientes azuis e laranjas para destaque
-- **Cards Flutuantes**: Efeitos de hover e animações suaves
-- **Responsivo**: Adaptado para todos os dispositivos
+### 📧 Formulário "Trabalhe Conosco"
+- **Campos obrigatórios:** Nome, Email, Telefone, Cargo, Currículo
+- **Campos opcionais:** Experiência Profissional
+- **Validação:** LGPD consentimento obrigatório
+- **Destino:** `tisoledadeturismo@gmail.com`
 
-### 🖼️ Imagens dos Ônibus
-O site utiliza as imagens da frota da Soledade Turismo:
-- **Hero Section**: Imagem dos dois ônibus como fundo principal
-- **Showcase**: Imagem dos três ônibus destacando a frota
-- **CTA Section**: Ônibus amarelo como fundo da seção de newsletter
+## 🛠️ Configuração do Netlify Forms
 
-### 🚀 Funcionalidades
+### 1. Deploy no Netlify
+1. **Acesse** https://netlify.com
+2. **Faça login** ou crie uma conta
+3. **Arraste** a pasta do projeto para o Netlify
+4. **Aguarde** o deploy automático
 
-#### Header Fixo
-- Logo da empresa
-- Navegação suave para as seções
-- Botão de contato direto
-- Efeito de transparência no scroll
+### 2. Configurar Notificações
+1. **No dashboard** do Netlify
+2. **Vá em** "Site settings" → "Forms"
+3. **Clique** em "Form notifications"
+4. **Adicione** notificação por email:
+   - **To:** `tisoledadeturismo@gmail.com`
+   - **Subject:** `Nova Candidatura - Soledade Turismo`
 
-#### Hero Section
-- Imagem de fundo impactante
-- Título com gradiente
-- Botões de call-to-action
-- Overlay gradiente para melhor legibilidade
+### 3. Vantagens do Netlify Forms
+- **✅ Upload de arquivo** funcionando
+- **✅ 100 submissões/mês** grátis
+- **✅ Sem spam** (emails diretos)
+- **✅ Dashboard** para gerenciar submissões
 
-#### Seção de Benefícios
-- 4 cards com ícones
-- Efeitos de hover
-- Informações sobre a empresa
+## 📁 Estrutura do Projeto
 
-#### Seção "Como Visto Em"
-- Logos de referência
-- Efeitos de hover nos itens
-
-#### Showcase do Produto
-- Imagem da frota
-- Texto descritivo
-- Botão de ação
-
-#### Carrossel de Depoimentos
-- 3 depoimentos rotativos
-- Controles de navegação
-- Auto-play a cada 5 segundos
-- Indicadores visuais
-
-#### Newsletter
-- Formulário de inscrição
-- Validação de email
-- Feedback visual
-
-#### Footer
-- Links organizados por categoria
-- Informações de contato
-- Design escuro contrastante
-
-## 🛠️ Tecnologias Utilizadas
-
-- **HTML5**: Estrutura semântica
-- **CSS3**: 
-  - Grid e Flexbox para layout
-  - Variáveis CSS para consistência
-  - Animações e transições
-  - Media queries para responsividade
-- **JavaScript**: 
-  - Navegação suave
-  - Carrossel interativo
-  - Validação de formulários
-  - Animações de entrada
-
-## 📱 Responsividade
-
-O site é totalmente responsivo e se adapta a:
-- **Desktop**: Layout completo com todas as funcionalidades
-- **Tablet**: Ajustes de grid e tamanhos
-- **Mobile**: Layout em coluna única, navegação otimizada
+```
+DESENVOLVIMENTO SOLEDADE TURISMO/
+├── index.html          # Página principal
+├── css/
+│   └── style.css       # Estilos CSS
+├── js/
+│   └── script.js       # JavaScript
+├── img/                # Imagens do site
+└── README.md           # Este arquivo
+```
 
 ## 🎯 Seções do Site
 
-1. **Header** - Navegação e contato
-2. **Hero** - Apresentação principal
-3. **Benefícios** - Diferenciais da empresa
-4. **Referências** - "Como visto em"
-5. **Showcase** - Apresentação da frota
-6. **Depoimentos** - Carrossel de clientes
-7. **Newsletter** - Captura de leads
-8. **Footer** - Links e informações
+1. **Home** - Apresentação da empresa
+2. **Benefícios** - Vantagens de trabalhar na empresa
+3. **Trabalhe Conosco** - Formulário de candidatura
+4. **CTA** - Newsletter
+5. **Footer** - Informações de contato
 
-## 📞 Informações de Contato
+## 📱 Responsividade
 
-- **Empresa**: Soledade Turismo LTDA
-- **CNPJ**: 88.904.586/0001-60
-- **Endereço**: Av. Julio de Castilhos, 1465 - Soledade/RS
-- **Email**: soledadeturismo@gmail.com
-- **WhatsApp**: (54) 99999-9999
+- **Desktop:** Layout completo
+- **Tablet:** Ajustes para telas médias
+- **Mobile:** Layout otimizado para smartphones
 
-## 🎨 Paleta de Cores
+## 🔧 Tecnologias Utilizadas
 
-- **Azul Primário**: #2ec4f1
-- **Azul Secundário**: #005baa
-- **Laranja**: #f39c12
-- **Escuro**: #1a1a1a
-- **Cinza Claro**: #f8f9fa
-- **Branco**: #ffffff
+- **HTML5** - Estrutura semântica
+- **CSS3** - Estilos modernos com Flexbox/Grid
+- **JavaScript** - Interatividade e validações
+- **Netlify Forms** - Processamento de formulários com upload
 
-## 📈 Objetivos do Design
+## 📧 Teste do Formulário
 
-- **Conversão**: Foco em call-to-actions claros
-- **Credibilidade**: Depoimentos e histórico da empresa
-- **Usabilidade**: Navegação intuitiva e rápida
-- **Profissionalismo**: Design moderno e confiável
-- **Mobile-first**: Experiência otimizada para dispositivos móveis
+Para testar o formulário:
+1. Acesse a seção "Trabalhe Conosco"
+2. Preencha todos os campos obrigatórios
+3. Anexe um arquivo PDF/DOC/DOCX
+4. Envie o formulário
+5. Verifique o email `tisoledadeturismo@gmail.com`
+
+## 🚀 Deploy
+
+O site está pronto para deploy em qualquer servidor web estático:
+- Netlify
+- Vercel
+- GitHub Pages
+- Servidor tradicional
+
+---
+
+**Desenvolvido para Soledade Turismo** 🚌✨
 

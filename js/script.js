@@ -61,104 +61,7 @@ window.addEventListener('scroll', function() {
   }
 });
 
-// Carrossel de depoimentos
-let currentReview = 0;
-const reviewSlides = document.querySelectorAll('.review-slide');
-const dots = document.querySelectorAll('.dot');
 
-function showReview(index) {
-  // Esconde todos os slides
-  reviewSlides.forEach(slide => {
-    slide.classList.remove('active');
-  });
-  
-  // Remove classe active de todos os dots
-  dots.forEach(dot => {
-    dot.classList.remove('active');
-  });
-  
-  // Mostra o slide atual
-  if (reviewSlides[index]) {
-    reviewSlides[index].classList.add('active');
-  }
-  
-  // Ativa o dot atual
-  if (dots[index]) {
-    dots[index].classList.add('active');
-  }
-}
-
-function changeReview(direction) {
-  currentReview += direction;
-  
-  if (currentReview >= reviewSlides.length) {
-    currentReview = 0;
-  } else if (currentReview < 0) {
-    currentReview = reviewSlides.length - 1;
-  }
-  
-  showReview(currentReview);
-}
-
-function goToReview(index) {
-  currentReview = index - 1; // Ajusta para o índice baseado em 0
-  showReview(currentReview);
-}
-
-// Adiciona event listeners para os dots
-dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    goToReview(index + 1);
-  });
-});
-
-// Auto-play do carrossel
-setInterval(() => {
-  changeReview(1);
-}, 10000);
-
-// Funcionalidade de swipe para mobile
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleSwipe() {
-  const swipeThreshold = 50; // Distância mínima para considerar um swipe
-  const diff = touchStartX - touchEndX;
-  
-  if (Math.abs(diff) > swipeThreshold) {
-    if (diff > 0) {
-      // Swipe para a esquerda - próximo depoimento
-      changeReview(1);
-    } else {
-      // Swipe para a direita - depoimento anterior
-      changeReview(-1);
-    }
-  }
-}
-
-// Adiciona event listeners para touch apenas em dispositivos móveis
-function addSwipeListeners() {
-  const carousel = document.querySelector('.reviews-carousel');
-  
-  if (carousel && window.innerWidth <= 768) {
-    carousel.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-    
-    carousel.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    });
-  }
-}
-
-// Chama a função quando a página carrega
-document.addEventListener('DOMContentLoaded', function() {
-  addSwipeListeners();
-  
-  // Re-adiciona listeners quando a janela é redimensionada
-  window.addEventListener('resize', addSwipeListeners);
-});
 
 // Animação de entrada das seções
 const observerOptions = {
@@ -299,6 +202,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const fileLabel = document.querySelector('.file-label .file-text');
   
   if (careersForm && fileInput && fileLabel) {
+    // Phone number formatting
+    const telefoneInput = document.getElementById('telefone');
+    if (telefoneInput) {
+      telefoneInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length <= 11) {
+          if (value.length <= 2) {
+            value = `(${value}`;
+          } else if (value.length <= 6) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+          } else if (value.length <= 10) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+          } else {
+            value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+          }
+        }
+        e.target.value = value;
+      });
+    }
+    
     // File upload feedback
     fileInput.addEventListener('change', function(e) {
       const file = e.target.files[0];
@@ -328,8 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form submission
     careersForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
       const submitButton = this.querySelector('.submit-button');
       const originalText = submitButton.innerHTML;
       
@@ -337,26 +258,10 @@ document.addEventListener('DOMContentLoaded', function() {
       submitButton.innerHTML = '<span class="button-text">Enviando...</span><span class="button-icon">⏳</span>';
       submitButton.disabled = true;
       
-      // Simulate form submission (replace with actual form handling)
-      setTimeout(() => {
-        // Success state
-        submitButton.innerHTML = '<span class="button-text">Enviado com Sucesso!</span><span class="button-icon">✅</span>';
-        submitButton.style.background = 'var(--accent-color)';
-        
-        // Reset form
-        careersForm.reset();
-        fileLabel.textContent = 'Escolher arquivo';
-        
-        // Show success message
-        showNotification('Candidatura enviada com sucesso! Entraremos em contato em breve.', 'success');
-        
-        // Reset button after 3 seconds
-        setTimeout(() => {
-          submitButton.innerHTML = originalText;
-          submitButton.style.background = 'var(--gradient-primary)';
-          submitButton.disabled = false;
-        }, 3000);
-      }, 2000);
+      // Let the form submit naturally to Formspree
+      // The form will redirect to Formspree's success page
+      // No need to prevent default or show notification here
+      // Formspree will handle the redirect
     });
   }
 });
