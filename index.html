@@ -272,6 +272,24 @@
     </div>
   </footer>
 
+  <!-- Formulário fantasma para Netlify detectar -->
+  <form name="careers" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="nome" />
+    <input type="email" name="email" />
+    <input type="tel" name="telefone" />
+    <select name="cargo">
+      <option value="motorista">Motorista</option>
+      <option value="auxiliar">Auxiliar de Motorista</option>
+      <option value="atendente">Atendente</option>
+      <option value="vendedor">Vendedor</option>
+      <option value="administrativo">Administrativo</option>
+      <option value="outro">Outro</option>
+    </select>
+    <textarea name="experiencia"></textarea>
+    <input type="file" name="curriculo" />
+    <input type="checkbox" name="concordo" />
+  </form>
+
   <script src="js/script.js"></script>
 </body>
 </html> 
