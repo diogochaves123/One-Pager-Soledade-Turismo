@@ -52,75 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
 // Header com efeito de scroll
 window.addEventListener('scroll', function() {
   const header = document.querySelector('.modern-header');
-  const isMobile = window.innerWidth <= 768;
-  
   if (window.scrollY > 100) {
     header.style.background = 'rgba(255, 255, 255, 0.98)';
     header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
   } else {
     header.style.background = 'rgba(255, 255, 255, 0.95)';
-    header.style.boxShadow = isMobile ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
+    header.style.boxShadow = 'none';
   }
 });
-
-// Variáveis para controle do header mobile
-let lastScrollTop = 0;
-let scrollThreshold = 50; // Aumentado para melhor experiência
-let scrollTimeout;
-
-// Função para controlar o header no mobile (hide on scroll)
-function handleMobileHeaderScroll() {
-  const header = document.querySelector('.modern-header');
-  const isMobile = window.innerWidth <= 768;
-  
-  if (!isMobile) {
-    header.classList.remove('header-hidden');
-    return;
-  }
-  
-  const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  
-  // Limpar timeout anterior
-  clearTimeout(scrollTimeout);
-  
-  // Se estiver rolando para baixo e passou do threshold
-  if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
-    scrollTimeout = setTimeout(() => {
-      header.classList.add('header-hidden');
-    }, 150); // Pequeno delay para evitar flickering
-  }
-  // Se estiver rolando para cima ou no topo
-  else if (currentScrollTop < lastScrollTop || currentScrollTop <= scrollThreshold) {
-    header.classList.remove('header-hidden');
-  }
-  
-  lastScrollTop = currentScrollTop;
-}
-
-// Melhorar experiência do cabeçalho no mobile
-function handleMobileHeader() {
-  const header = document.querySelector('.modern-header');
-  const isMobile = window.innerWidth <= 768;
-  
-  if (isMobile) {
-    // Adicionar classe específica para mobile
-    header.classList.add('mobile-header');
-    
-    // Ajustar altura do header para evitar sobreposição
-    const headerHeight = header.offsetHeight;
-    document.body.style.paddingTop = headerHeight + 'px';
-  } else {
-    header.classList.remove('mobile-header');
-    document.body.style.paddingTop = '0';
-  }
-}
-
-// Executar no carregamento e no redimensionamento
-window.addEventListener('load', handleMobileHeader);
-window.addEventListener('resize', handleMobileHeader);
-
-// Adicionar listener para o scroll do header mobile
-window.addEventListener('scroll', handleMobileHeaderScroll);
 
 
 

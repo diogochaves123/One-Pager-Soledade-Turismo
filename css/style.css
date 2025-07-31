@@ -46,66 +46,15 @@ body {
 
 /* Header Moderno */
 .modern-header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--gray-200);
   z-index: 1000;
   transition: all 0.3s ease;
-}
-
-/* Header fixo apenas no mobile */
-@media (max-width: 768px) {
-  .modern-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-  }
-  
-  /* Classe para esconder o header no mobile */
-  .modern-header.header-hidden {
-    transform: translateY(-100%);
-  }
-  
-  .header-container {
-    padding: 1rem 1.5rem;
-    flex-direction: row;
-    gap: 1rem;
-  }
-  
-  .header-logo {
-    height: 45px;
-  }
-  
-  .modern-nav {
-    gap: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .header-actions {
-    flex-direction: row;
-    gap: 0.8rem;
-    align-items: center;
-  }
-  
-  .header-phone {
-    font-size: 0.85rem;
-  }
-  
-  .cta-button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-  
-  /* Classe específica para mobile */
-  .mobile-header {
-    background: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(15px);
-  }
 }
 
 .header-container {
@@ -194,14 +143,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 0;
-}
-
-/* Ajuste do margin-top apenas no mobile */
-@media (max-width: 768px) {
-  .hero-section {
-    margin-top: 90px;
-  }
+  margin-top: 80px;
 }
 
 .hero-background {
@@ -905,7 +847,20 @@ body {
 
 /* Responsividade */
 @media (max-width: 768px) {
-  /* Header já configurado acima na seção específica */
+  .header-container {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .modern-nav {
+    gap: 1rem;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
   
   .hero-brand {
     font-size: 2.8rem;
