@@ -62,6 +62,13 @@ body {
     left: 0;
     right: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Classe para esconder o header no mobile */
+  .modern-header.header-hidden {
+    transform: translateY(-100%);
   }
   
   .header-container {

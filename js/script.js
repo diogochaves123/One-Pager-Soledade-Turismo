@@ -63,6 +63,40 @@ window.addEventListener('scroll', function() {
   }
 });
 
+// Variáveis para controle do header mobile
+let lastScrollTop = 0;
+let scrollThreshold = 50; // Aumentado para melhor experiência
+let scrollTimeout;
+
+// Função para controlar o header no mobile (hide on scroll)
+function handleMobileHeaderScroll() {
+  const header = document.querySelector('.modern-header');
+  const isMobile = window.innerWidth <= 768;
+  
+  if (!isMobile) {
+    header.classList.remove('header-hidden');
+    return;
+  }
+  
+  const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+  // Limpar timeout anterior
+  clearTimeout(scrollTimeout);
+  
+  // Se estiver rolando para baixo e passou do threshold
+  if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
+    scrollTimeout = setTimeout(() => {
+      header.classList.add('header-hidden');
+    }, 150); // Pequeno delay para evitar flickering
+  }
+  // Se estiver rolando para cima ou no topo
+  else if (currentScrollTop < lastScrollTop || currentScrollTop <= scrollThreshold) {
+    header.classList.remove('header-hidden');
+  }
+  
+  lastScrollTop = currentScrollTop;
+}
+
 // Melhorar experiência do cabeçalho no mobile
 function handleMobileHeader() {
   const header = document.querySelector('.modern-header');
@@ -84,6 +118,9 @@ function handleMobileHeader() {
 // Executar no carregamento e no redimensionamento
 window.addEventListener('load', handleMobileHeader);
 window.addEventListener('resize', handleMobileHeader);
+
+// Adicionar listener para o scroll do header mobile
+window.addEventListener('scroll', handleMobileHeaderScroll);
 
 
 
