@@ -23,6 +23,16 @@ function updateWhatsAppLinks() {
   const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
   whatsappLinks.forEach(link => {
     link.href = whatsappUrl;
+    console.log('Link WhatsApp atualizado:', whatsappUrl); // Debug
+  });
+  
+  // Também atualizar links específicos por classe
+  const ctaButtons = document.querySelectorAll('.cta-button, .primary-button');
+  ctaButtons.forEach(button => {
+    if (button.href && button.href.includes('wa.me')) {
+      button.href = whatsappUrl;
+      console.log('Botão CTA atualizado:', whatsappUrl); // Debug
+    }
   });
 }
 
@@ -175,6 +185,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Efeito de loading da página
 window.addEventListener('load', function() {
   document.body.style.opacity = '1';
+  
+  // Atualizar links do WhatsApp novamente após carregamento completo
+  updateWhatsAppLinks();
 });
 
 // Inicialização
@@ -194,6 +207,29 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.style.opacity = '1';
   }, 100);
 });
+
+// Função para mostrar depoimento (se não existir)
+function showReview(index) {
+  const slides = document.querySelectorAll('.review-slide');
+  const dots = document.querySelectorAll('.dot');
+  
+  if (slides.length > 0) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    if (slides[index]) {
+      slides[index].classList.add('active');
+    }
+    if (dots[index]) {
+      dots[index].classList.add('active');
+    }
+  }
+}
+
+// Função para ir para um depoimento específico
+function goToReview(index) {
+  showReview(index);
+}
 
 // Removendo configuração do EmailJS - agora usamos Resend via Netlify Functions
 
