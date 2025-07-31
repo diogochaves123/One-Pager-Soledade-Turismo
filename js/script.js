@@ -52,14 +52,38 @@ document.addEventListener('DOMContentLoaded', function() {
 // Header com efeito de scroll
 window.addEventListener('scroll', function() {
   const header = document.querySelector('.modern-header');
+  const isMobile = window.innerWidth <= 768;
+  
   if (window.scrollY > 100) {
     header.style.background = 'rgba(255, 255, 255, 0.98)';
     header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
   } else {
     header.style.background = 'rgba(255, 255, 255, 0.95)';
-    header.style.boxShadow = 'none';
+    header.style.boxShadow = isMobile ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
   }
 });
+
+// Melhorar experiência do cabeçalho no mobile
+function handleMobileHeader() {
+  const header = document.querySelector('.modern-header');
+  const isMobile = window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // Adicionar classe específica para mobile
+    header.classList.add('mobile-header');
+    
+    // Ajustar altura do header para evitar sobreposição
+    const headerHeight = header.offsetHeight;
+    document.body.style.paddingTop = headerHeight + 'px';
+  } else {
+    header.classList.remove('mobile-header');
+    document.body.style.paddingTop = '0';
+  }
+}
+
+// Executar no carregamento e no redimensionamento
+window.addEventListener('load', handleMobileHeader);
+window.addEventListener('resize', handleMobileHeader);
 
 
 
