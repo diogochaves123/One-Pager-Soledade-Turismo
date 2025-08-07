@@ -316,10 +316,11 @@ body {
 
 .featured-logos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  justify-items: center;
 }
 
 .logo-item {
@@ -904,7 +905,8 @@ body {
   }
   
   .featured-logos {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
   
   .newsletter-form {
@@ -1053,5 +1055,15 @@ body {
   .secondary-button {
     padding: 0.8rem 1.5rem;
     font-size: 0.85rem;
+  }
+  
+  .featured-logos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .logo-item {
+    font-size: 0.8rem;
+    padding: 0.8rem;
   }
 } 
