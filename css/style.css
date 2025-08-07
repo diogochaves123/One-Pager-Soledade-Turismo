@@ -906,8 +906,20 @@ body {
   }
   
   .featured-logos {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+  
+  .logo-item {
+    font-size: 0.9rem;
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+    word-wrap: break-word;
+    hyphens: auto;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .newsletter-form {
@@ -1059,12 +1071,26 @@ body {
   }
   
   .featured-logos {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
   }
   
   .logo-item {
-    font-size: 0.8rem;
-    padding: 0.8rem;
+    font-size: 0.85rem;
+    padding: 1rem 0.6rem;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 320px) {
+  .featured-logos {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .logo-item {
+    font-size: 0.9rem;
+    padding: 1.2rem 1rem;
+    min-height: 50px;
   }
 } 
